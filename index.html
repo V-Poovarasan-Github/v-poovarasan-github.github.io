@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>V Poovarasan — Apps</title>
+<meta name="description" content="Privacy-first Android apps by V Poovarasan: GlowBack, an offline neon memory duel, and SilentSums, an offline personal finance tracker. No accounts, no ads, no tracking." />
+<meta name="theme-color" content="#06080D" />
+<link rel="canonical" href="https://v-poovarasan-github.github.io/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="V Poovarasan — Apps" />
+<meta property="og:title" content="V Poovarasan — Apps" />
+<meta property="og:description" content="Privacy-first Android apps: GlowBack (offline neon memory duel) and SilentSums (offline personal finance). No accounts, no ads, no tracking." />
+<meta property="og:url" content="https://v-poovarasan-github.github.io/" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="V Poovarasan — Apps" />
+<meta name="twitter:description" content="Privacy-first Android apps: GlowBack (offline neon memory duel) and SilentSums (offline personal finance). No accounts, no ads, no tracking." />
+<link rel="icon" sizes="any" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2306080D'/><rect x='12' y='12' width='18' height='18' rx='5' fill='%2310B981'/><rect x='34' y='12' width='18' height='18' rx='5' fill='%2300E5FF'/><rect x='12' y='34' width='18' height='18' rx='5' fill='%23F59E0B'/><rect x='34' y='34' width='18' height='18' rx='5' fill='%23EF4444'/></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#06080D;
+    --panel:#0D1220;
+    --line: rgba(148,163,184,0.13);
+    --line-strong: rgba(148,163,184,0.26);
+    --paper:#F4F7FB;
+    --dim:#94A3B8;
+    --dim-2:#64748B;
+    /* GlowBack identity */
+    --gb-cyan:#00E5FF; --gb-green:#10B981; --gb-red:#EF4444;
+    /* SilentSums identity */
+    --ss-green:#10B981; --ss-glow:#6EE7B7; --ss-amber:#F59E0B;
+    --font-display:'Space Grotesk', system-ui, sans-serif;
+    --font-body:'Inter', system-ui, sans-serif;
+  }
+  *{ box-sizing: border-box; }
+  html{ background: var(--ink); }
+  body{
+    margin:0;
+    background: var(--ink);
+    background-image:
+      radial-gradient(ellipse 800px 450px at 20% -10%, rgba(0,229,255,0.07), transparent 60%),
+      radial-gradient(ellipse 800px 500px at 85% 0%, rgba(16,185,129,0.07), transparent 60%),
+      radial-gradient(ellipse 900px 600px at 50% 110%, rgba(245,158,11,0.04), transparent 60%);
+    color: var(--paper);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  a{ color: inherit; }
+  :focus-visible{ outline: 2px solid var(--gb-cyan); outline-offset: 3px; border-radius: 4px; }
+  .wrap{ width:100%; max-width: 1060px; margin: 0 auto; padding: 0 48px; }
+  @media (max-width: 600px){ .wrap{ padding: 0 24px; } }
+
+  header{ border-bottom: 1px solid var(--line); }
+  .nav{ display:flex; align-items:center; justify-content:space-between; gap:14px; padding-top: 18px; padding-bottom: 18px; }
+  .sitemark{
+    display:inline-flex; align-items:center; gap:10px;
+    font-weight: 800; font-size: 16px; letter-spacing: 0.01em;
+    color:#fff; text-decoration:none;
+  }
+  .sitemark .tiles{
+    display:grid; grid-template-columns: repeat(2, 7px); gap: 2.5px;
+  }
+  .sitemark .tiles span{ width:7px; height:7px; border-radius:2px; }
+  .sitemark .tiles span:nth-child(1){ background: var(--ss-green); }
+  .sitemark .tiles span:nth-child(2){ background: var(--gb-cyan); }
+  .sitemark .tiles span:nth-child(3){ background: var(--ss-amber); }
+  .sitemark .tiles span:nth-child(4){ background: var(--gb-red); }
+  .ghlink{ color: var(--dim); text-decoration:none; font-size: 14px; font-weight: 500; }
+  .ghlink:hover{ color: var(--paper); }
+
+  main{ flex: 1; }
+  .hero{ padding-top: 72px; padding-bottom: 20px; text-align:center; }
+  .hero h1{
+    font-family: var(--font-display);
+    font-size: clamp(30px, 5vw, 46px);
+    letter-spacing: -0.015em;
+    margin: 0 0 14px;
+  }
+  .hero p{
+    color: var(--dim); font-size: 16.5px; max-width: 560px; margin: 0 auto;
+  }
+  .hero .pills{ display:flex; gap:10px; justify-content:center; margin-top: 22px; flex-wrap:wrap; }
+  .pill{
+    font-size: 12.5px; font-weight: 500; color: var(--dim);
+    background: rgba(13,18,32,0.7); border:1px solid var(--line);
+    padding: 6px 13px; border-radius: 999px;
+  }
+
+  .apps{ padding-top: 48px; padding-bottom: 84px; }
+  .app-grid{
+    display:grid; grid-template-columns: 1fr 1fr; gap: 26px;
+  }
+  @media (max-width: 860px){ .app-grid{ grid-template-columns: 1fr; } }
+
+  .app-card{
+    position: relative;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 30px;
+    display:flex; flex-direction:column;
+    transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+  }
+  .app-card:hover{ transform: translateY(-3px); }
+  .app-card.glowback:hover{ border-color: rgba(0,229,255,0.45); box-shadow: 0 18px 50px -18px rgba(0,229,255,0.18); }
+  .app-card.silentsums:hover{ border-color: rgba(16,185,129,0.45); box-shadow: 0 18px 50px -18px rgba(16,185,129,0.18); }
+
+  .app-head{ display:flex; align-items:center; gap: 13px; margin-bottom: 16px; }
+  .app-icon{
+    width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0;
+    display:flex; align-items:center; justify-content:center;
+    border: 1px solid;
+  }
+  .glowback .app-icon{
+    background: #0A1020; border-color: rgba(0,229,255,0.35);
+    gap: 5px;
+  }
+  .glowback .app-icon span{ width: 11px; height: 11px; border-radius: 50%; }
+  .glowback .app-icon .d1{ background: var(--gb-green); box-shadow: 0 0 9px rgba(16,185,129,0.9); }
+  .glowback .app-icon .d2{ background: var(--gb-red); box-shadow: 0 0 9px rgba(239,68,68,0.9); }
+  .silentsums .app-icon{
+    background: #253D9F; border-color: rgba(59,89,210,0.6);
+    overflow: hidden; padding: 0;
+  }
+  .silentsums .app-icon img{ width: 100%; height: 100%; object-fit: cover; }
+  .app-name{
+    font-family: var(--font-display); font-weight: 700; font-size: 21px; margin: 0;
+  }
+  .glowback .app-name{ letter-spacing: 0.06em; }
+  .app-kind{ font-size: 12.5px; color: var(--dim-2); font-weight: 500; }
+
+  .app-tag{
+    font-size: 15px; color: var(--paper); font-weight: 600; margin: 0 0 8px;
+  }
+  .glowback .app-tag em{ color: var(--gb-cyan); font-style: normal; }
+  .silentsums .app-tag em{ color: var(--ss-glow); font-style: normal; }
+  .app-desc{ font-size: 14.5px; color: var(--dim); margin: 0 0 18px; line-height: 1.6; }
+
+  .chip-row{ display:flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .chip{
+    font-size: 11.5px; font-weight: 600; padding: 4px 11px; border-radius: 999px;
+    border: 1px solid var(--line-strong); color: var(--dim);
+  }
+  .glowback .chip.hl{ border-color: rgba(0,229,255,0.4); color: var(--gb-cyan); background: rgba(0,229,255,0.07); }
+  .silentsums .chip.hl{ border-color: rgba(16,185,129,0.4); color: var(--ss-glow); background: rgba(16,185,129,0.07); }
+
+  .btn-row{ display:flex; gap: 10px; flex-wrap: wrap; margin-top: auto; }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:7px;
+    padding: 10px 18px; border-radius: 10px; font-weight: 600; font-size: 13.5px;
+    border: 1px solid transparent; text-decoration:none; white-space:nowrap;
+    transition: transform .15s ease, background .15s ease, border-color .15s ease, box-shadow .15s ease;
+  }
+  .btn:active{ transform: translateY(1px); }
+  .glowback .btn-main{ background: var(--gb-cyan); color: #04141A; }
+  .glowback .btn-main:hover{ box-shadow: 0 0 20px rgba(0,229,255,0.35); }
+  .silentsums .btn-main{ background: var(--ss-green); color: #04130D; }
+  .silentsums .btn-main:hover{ box-shadow: 0 0 20px rgba(16,185,129,0.35); }
+  .btn-ghost{ color: var(--paper); border-color: var(--line-strong); background: rgba(255,255,255,0.02); }
+  .btn-ghost:hover{ border-color: var(--dim); background: rgba(255,255,255,0.06); }
+
+  footer{ border-top: 1px solid var(--line); padding-top: 26px; padding-bottom: 34px; }
+  .foot{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap: 12px; color: var(--dim-2); font-size: 13px; }
+  .foot a{ color: var(--dim); text-decoration:none; }
+  .foot a:hover{ color: var(--paper); }
+
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{ transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="sitemark" href="/">
+      <span class="tiles" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+      V Poovarasan
+    </a>
+    <a class="ghlink" href="https://github.com/V-Poovarasan-Github" target="_blank" rel="noopener">GitHub &#8599;</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <h1>Apps that mind their own business.</h1>
+    <p>Privacy-first Android apps, built solo. 100% offline, no accounts, no ads, no analytics — your data stays on your phone.</p>
+    <div class="pills">
+      <span class="pill">Zero network permission</span>
+      <span class="pill">No tracking of any kind</span>
+      <span class="pill">Android</span>
+    </div>
+  </section>
+
+  <section class="apps wrap">
+    <div class="app-grid">
+
+      <!-- GlowBack -->
+      <article class="app-card glowback">
+        <div class="app-head">
+          <div class="app-icon" aria-hidden="true"><span class="d1"></span><span class="d2"></span></div>
+          <div>
+            <h2 class="app-name">GLOWBACK</h2>
+            <span class="app-kind">Neon memory duel</span>
+          </div>
+        </div>
+        <p class="app-tag">Watch the glow. <em>Send it back.</em></p>
+        <p class="app-desc">Memorize an expanding pattern of light and sound across four grid sizes, then challenge a friend to beat your exact sequence with a single line of text — no server in between.</p>
+        <div class="chip-row">
+          <span class="chip hl">Offline duels</span>
+          <span class="chip">4 grid sizes</span>
+          <span class="chip">Pass-and-play 2P&ndash;4P</span>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn-main" href="/GlowBack-Game/">Visit site</a>
+          <a class="btn btn-ghost" href="https://github.com/V-Poovarasan-Github/GlowBack-Game/releases/latest" target="_blank" rel="noopener">Download APK</a>
+          <a class="btn btn-ghost" href="https://github.com/V-Poovarasan-Github/GlowBack-Game" target="_blank" rel="noopener">Source</a>
+        </div>
+      </article>
+
+      <!-- SilentSums -->
+      <article class="app-card silentsums">
+        <div class="app-head">
+          <div class="app-icon" aria-hidden="true"><img src="/Silent-Sums/logo.png" alt=""></div>
+          <div>
+            <h2 class="app-name">SilentSums</h2>
+            <span class="app-kind">Personal finance tracker</span>
+          </div>
+        </div>
+        <p class="app-tag">Your money. Your phone. <em>Nobody else's business.</em></p>
+        <p class="app-desc">A fast, local expense ledger in a 3.19 MB APK: budgets, dues and EMIs, receipts and voice notes, privacy mask, PIN and biometric lock — and a CSV you own forever.</p>
+        <div class="chip-row">
+          <span class="chip hl">100% offline ledger</span>
+          <span class="chip">CSV &amp; JSON export</span>
+          <span class="chip">PIN + biometric lock</span>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn-main" href="/Silent-Sums/">Visit site</a>
+          <a class="btn btn-ghost" href="https://github.com/V-Poovarasan-Github/Silent-Sums/releases/latest" target="_blank" rel="noopener">Download APK</a>
+          <a class="btn btn-ghost" href="https://github.com/V-Poovarasan-Github/Silent-Sums" target="_blank" rel="noopener">Source</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>Copyright (c) 2026 V Poovarasan. All rights reserved.</span>
+    <span><a href="https://github.com/V-Poovarasan-Github" target="_blank" rel="noopener">GitHub</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
