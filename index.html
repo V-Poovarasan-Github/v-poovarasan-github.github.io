@@ -120,11 +120,9 @@
   }
   .glowback .app-icon{
     background: #0A1020; border-color: rgba(0,229,255,0.35);
-    gap: 5px;
+    overflow: hidden; padding: 0;
   }
-  .glowback .app-icon span{ width: 11px; height: 11px; border-radius: 50%; }
-  .glowback .app-icon .d1{ background: var(--gb-green); box-shadow: 0 0 9px rgba(16,185,129,0.9); }
-  .glowback .app-icon .d2{ background: var(--gb-red); box-shadow: 0 0 9px rgba(239,68,68,0.9); }
+  .glowback .app-icon img{ width: 100%; height: 100%; object-fit: cover; }
   .silentsums .app-icon{
     background: #253D9F; border-color: rgba(59,89,210,0.6);
     overflow: hidden; padding: 0;
@@ -205,7 +203,7 @@
       <!-- GlowBack -->
       <article class="app-card glowback">
         <div class="app-head">
-          <div class="app-icon" aria-hidden="true"><span class="d1"></span><span class="d2"></span></div>
+          <div class="app-icon" aria-hidden="true"><img src="/GlowBack-Game/logo.png" alt=""></div>
           <div>
             <h2 class="app-name">GLOWBACK</h2>
             <span class="app-kind">Neon memory duel</span>
@@ -235,7 +233,7 @@
           </div>
         </div>
         <p class="app-tag">Your money. Your phone. <em>Nobody else's business.</em></p>
-        <p class="app-desc">A fast, local expense ledger in a 3.19 MB APK: budgets, dues and EMIs, receipts and voice notes, privacy mask, PIN and biometric lock — and a CSV you own forever.</p>
+        <p class="app-desc">A fast, local expense ledger: budgets, dues and EMIs, receipt photos and voice notes, a one-tap privacy mask, PIN and biometric lock — and a CSV you own forever.</p>
         <div class="chip-row">
           <span class="chip hl">100% offline ledger</span>
           <span class="chip">CSV &amp; JSON export</span>
