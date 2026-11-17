@@ -28,9 +28,12 @@ no analytics.
 
 ## Files
 
-- `index.html` — the whole page (HTML + CSS, plus a few lines of JavaScript for
-  the card hover glow; no build step). The two app logos load from the app
-  sites (see above).
+- `index.html` — the whole page (HTML + CSS, plus a small script for the
+  light/dark toggle and the mouse effects; no build step). The theme choice is
+  kept in the visitor's own browser (`localStorage`) and is never sent anywhere.
+  The mouse effects (card tilt and glow, cursor-lit dots) run only with a mouse
+  and are off when the visitor prefers reduced motion. The two app logos load
+  from the app sites (see above).
 - `fonts/` — the web fonts (Inter and Space Grotesk, SIL Open Font License),
   served from this site so the page makes no third-party requests.
   Licences are in `fonts/LICENSES.txt`.
@@ -40,9 +43,10 @@ no analytics.
 
 1. Publish the app's site from its own repo (Settings → Pages → `main`, root),
    with a `logo.png` in that repo's root.
-2. Copy one `<article class="app-card …">` block in `index.html`, give it its
-   own colour class, and update the name, tagline, description, chips and the
-   three links (`/<repo-name>/`, the repo's `releases/latest`, the repo).
+2. Replace the "Coming soon" card in `index.html` (or copy one
+   `<article class="app-card …">` block), give it its own colour class, and
+   update the name, tagline, description, chips and the three links
+   (`/<repo-name>/`, the repo's `releases/latest`, the repo).
 3. Commit to `main`. Pages redeploys in a minute or two.
 
 ## Preview locally
