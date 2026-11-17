@@ -28,8 +28,12 @@ no analytics.
 
 ## Files
 
-- `index.html` — the whole page (HTML + CSS, no build step, no JavaScript). Web
-  fonts load from Google Fonts, and the two app logos load from the app sites (see above).
+- `index.html` — the whole page (HTML + CSS, plus a few lines of JavaScript for
+  the card hover glow; no build step). The two app logos load from the app
+  sites (see above).
+- `fonts/` — the web fonts (Inter and Space Grotesk, SIL Open Font License),
+  served from this site so the page makes no third-party requests.
+  Licences are in `fonts/LICENSES.txt`.
 - `README.md` — this file.
 
 ## Adding another app
